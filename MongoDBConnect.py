@@ -11,7 +11,8 @@ cluster
 
 client = MongoClient(f"mongodb+srv://{Secrets.mongoUser}:{Secrets.mongopwd}@cluster0.pti3a.mongodb.net/{Secrets.dbName}?retryWrites=true&w=majority")
 db = client[Secrets.dbName]
-collection = db[Secrets.collectionName]
+# collection = db[Secrets.collectionName]
+
 
 # print(client.list_database_names())
 # print(db.list_collection_names())
