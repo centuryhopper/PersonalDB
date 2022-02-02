@@ -1,2 +1,6 @@
 secrets.py
 __pycache__
+flask_rest_api/
+.env
+test.py
+textfiles/

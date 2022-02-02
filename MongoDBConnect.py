@@ -6,7 +6,6 @@ cluster
     - database
         - collection
             - bson data
-
 '''
 
 client = MongoClient(f"mongodb+srv://{Secrets.mongoUser}:{Secrets.mongopwd}@cluster0.pti3a.mongodb.net/{Secrets.dbName}?retryWrites=true&w=majority")
