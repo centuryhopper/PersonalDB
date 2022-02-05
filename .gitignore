@@ -1,4 +1,4 @@
-secrets.py
+Credentials.py
 __pycache__
 flask_rest_api/
 .env

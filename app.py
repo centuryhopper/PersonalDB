@@ -1,8 +1,9 @@
 
 import configparser
+from distutils.log import debug
 import json
 import os
-
+# my-flask-app1234
 from flask import Blueprint, Flask, flash, render_template, request
 from flask_pymongo import PyMongo
 
@@ -84,6 +85,11 @@ def delete(val):
     return '<h1>Deleted a User!</h1>'
 
 
+def main():
+    app.run(debug=True)
 
+
+if __name__ == '__main__':
+    main()
 
 
