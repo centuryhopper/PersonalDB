@@ -1,2 +1,2 @@
-FLASK_APP=scripts
+FLASK_APP=app
 FLASK_ENV=development
