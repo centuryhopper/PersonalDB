@@ -2,7 +2,7 @@ from flask import Blueprint
 from .extensions import mongo
 from args import *
 import json
-
+# type 'pipenv lock' in the terminal to create a new pipfile
 main = Blueprint('main', __name__)
 
 # collections.find is regex friendly
