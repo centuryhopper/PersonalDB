@@ -1,10 +1,12 @@
 from flask import Flask
+import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource, abort, fields, marshal_with
 from args import *
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///contacts.db"
 api = Api(app)
@@ -25,13 +27,14 @@ class ContactModel(db.Model):
 
 # how the video model should be serialized
 resource_fields = {
-	'_id': fields.Integer,
-	'firstName': fields.String,
-	'lastName': fields.String,
-	'email': fields.String,
-	'phoneNumber': fields.String,
-	'relatedTopics': fields.String,
+    "_id": fields.Integer,
+    "firstName": fields.String,
+    "lastName": fields.String,
+    "email": fields.String,
+    "phoneNumber": fields.String,
+    "relatedTopics": fields.String,
 }
+
 
 class Contact(Resource):
     @marshal_with(resource_fields)
@@ -50,7 +53,7 @@ class Contact(Resource):
         )
         db.session.add(user)
         db.session.commit()
-        return '<h1>Added a User!</h1>'
+        return "<h1>Added a User!</h1>"
 
     @marshal_with(resource_fields)
     def get(self, contact_id):
@@ -59,10 +62,12 @@ class Contact(Resource):
             abort(404, message="Could not find contact with that id")
         return result
 
+
 class ContactList(Resource):
     @marshal_with(resource_fields)
     def get(self):
         return ContactModel.query.all()
+
 
 api.add_resource(Contact, "/contact/<int:contact_id>")
 api.add_resource(ContactList, "/contact/all")
@@ -88,9 +93,6 @@ def index():
 # @app.route('/countTotal', methods=['GET'])
 # def countTotal():
 #     return str(mongo.db.Contacts.count_documents({}))
-
-
-
 
 
 # @app.route('/put', methods=['PUT'])
