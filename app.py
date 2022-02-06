@@ -13,6 +13,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("POSTGRES_URL")
 api = Api(app)
 
 db = SQLAlchemy(app)
+db.init_app(app)
 migrate = Migrate(app,db)
 
 
