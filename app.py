@@ -78,9 +78,6 @@ def index():
     return "<h1>Welcome to the main page!</h1>"
 
 
-
-
-
 # @app.route('/getAll', methods=['GET'])
 # def getAll():
 #     res = [doc for doc in mongo.db.Contacts.find({})]
