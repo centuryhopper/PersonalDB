@@ -13,6 +13,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 api = Api(app)
 
 db = SQLAlchemy(app)
+db.init_app(app)
 
 class ContactModel(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
