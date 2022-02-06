@@ -61,7 +61,13 @@ class Contact(Resource):
             abort(404, message="Could not find contact with that id")
         return result
 
+class ContactList(Resource):
+    @marshal_with(resource_fields)
+    def get(self):
+        return ContactModel.query.all()
+
 api.add_resource(Contact, "/contact/<int:contact_id>")
+api.add_resource(ContactList, "/contact/all")
 
 # def userExists(val:int):
 #     user_collection = mongo.db.Contacts
