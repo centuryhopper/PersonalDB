@@ -14,6 +14,7 @@ api = Api(app)
 
 db = SQLAlchemy(app)
 db.init_app(app)
+migrate = Migrate(app, db)
 
 class ContactModel(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
