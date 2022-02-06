@@ -75,9 +75,9 @@ api.add_resource(ContactList, "/contact/all")
 #     return query is not None
 
 
-# @app.route("/", methods=["GET", "POST", "PUT", "DELETE"])
-# def index():
-#     return "<h1>Welcome to the main page!</h1>"
+@app.route("/hello", methods=["GET", "POST", "PUT", "DELETE"])
+def index():
+    return "<h1>Welcome to the main page!</h1>"
 
 
 
