@@ -14,9 +14,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("POSTGRES_URL")
 api = Api(app)
 
 db = SQLAlchemy(app)
-db.init_app(app)
-migrate = Migrate(app,db)
-
 
 class ContactModel(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
@@ -131,5 +128,5 @@ def index():
 #     app.run(debug=False, host='0.0.0.0')
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    app.run()
